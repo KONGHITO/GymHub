@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    height: 70px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+.menu {
+    position: relative;
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.menu a {
+    position: relative;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-family: "Roboto Light", serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    min-width: 50px;
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #E9C82B;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.menu a.active {
+    color: #E9C82B;
+}
+
+.menu a.active::after {
+    transform: scaleX(1);
+}
+
+.menu a i {
+    font-size: 26px;
+}
+
+.menu a:hover {
+    color: #E9C82B;
+}
+
+.menu a:hover::after {
+    transform: scaleX(1);
+}
+
+.user-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.user-actions a {
+    color: #333;
+    text-decoration: none;
+    font-size: 26px;
+    transition: color 0.3s ease;
+}
+
+.user-actions a:hover {
+    color: #E9C82B;
+}
+
+body {
+    padding-top: 70px;
+}

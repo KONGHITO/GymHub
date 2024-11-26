@@ -1,0 +1,103 @@
+/* Resetta i margini di default */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stile del header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+.menu {
+    position: relative;
+    display: flex;
+    gap: 25px; /* Distanza aumentata tra le icone */
+    justify-content: flex-start;
+    margin-left: 20px;
+}
+
+.menu a {
+    position: relative;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    font-family: "Roboto Light", serif;
+    display: inline-block;
+    padding: 10px;
+}
+
+.menu .indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px; /* Larghezza iniziale */
+    height: 3px;
+    background-color: #E9C82B;
+    transition: transform 0.3s ease, width 0.3s ease;
+    transform-origin: left;
+    z-index: 1;
+}
+
+.menu a.active {
+    color: #E9C82B;
+}
+
+.user-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.user-actions a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    font-family: "Roboto Light", serif;
+}
+
+.user-actions a:hover {
+    color: #E9C82B;
+}
+
+.menu a i,
+.user-actions a i {
+    font-size: 26px;
+    transition: color 0.3s ease;
+}
+
+.menu a:hover i,
+.user-actions a:hover i {
+    color: #E9C82B;
+}
+
+/* Aggiungi stili per i contenuti generali, se necessari */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+main {
+    padding: 20px;
+    margin-top: 60px; /* Distanza per evitare che il contenuto venga coperto dalla navbar */
+}
+
+

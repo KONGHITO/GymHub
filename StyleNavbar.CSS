@@ -32,7 +32,7 @@
 .menu {
     position: relative;
     display: flex;
-    gap: 25px;
+    gap: 35px; /* Aumenta la spaziatura tra i simboli */
     justify-content: center;
     flex-grow: 1;
 }
@@ -85,18 +85,47 @@
 
 .user-actions {
     display: flex;
-    gap: 15px;
+    gap: 25px; /* Aumenta la spaziatura tra i simboli */
 }
 
 .user-actions a {
+    position: relative;
     color: #333;
     text-decoration: none;
     font-size: 26px;
     transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    min-width: 50px;
+}
+
+.user-actions a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #E9C82B;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
 .user-actions a:hover {
     color: #E9C82B;
+}
+
+.user-actions a:hover::after {
+    transform: scaleX(1);
+}
+
+.user-image {
+    border-radius: 50%;
+    width: 30px; /* Dimensione ridotta della foto del profilo */
+    height: 30px; /* Dimensione ridotta della foto del profilo */
+    object-fit: cover;
 }
 
 body {

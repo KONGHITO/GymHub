@@ -1,4 +1,3 @@
-// navbar.js
 class Navbar {
     constructor() {
         this.currentPage = '';
@@ -6,12 +5,10 @@ class Navbar {
     }
 
     init() {
-        // Ottiene il nome della pagina corrente dall'URL
         const path = window.location.pathname;
         this.currentPage = path.split('/').pop().replace('.html', '').toLowerCase() || 'home';
         this.render();
         this.setupEventListeners();
-        // Imposta lo stato attivo iniziale
         this.setActivePage(this.currentPage);
     }
 
@@ -36,8 +33,12 @@ class Navbar {
                     </a>
                 </nav>
                 <div class="user-actions">
-                    <a href="#"><i class="bi bi-envelope"></i></a>
-                    <a href="#"><i class="bi bi-person"></i></a>
+                    <a href="Messages.html" class="${this.currentPage === 'messages' ? 'active' : ''}">
+                        <i class="bi bi-envelope"></i>
+                    </a>
+                    <a href="Profile.html" class="${this.currentPage === 'profile' ? 'active' : ''}">
+                        <img src="user-profile.jpg" alt="Profilo" class="user-image">
+                    </a>
                 </div>
             </header>
         `;
@@ -45,30 +46,26 @@ class Navbar {
     }
 
     setActivePage(page) {
-        // Rimuove la classe active da tutti i link
-        const links = document.querySelectorAll('.menu a');
+        const links = document.querySelectorAll('.menu a, .user-actions a');
         links.forEach(link => link.classList.remove('active'));
 
-        // Aggiunge la classe active al link corrispondente alla pagina
-        const activeLink = document.querySelector(`.menu a[data-page="${page}"]`);
+        const activeLink = document.querySelector(`.menu a[data-page="${page}"], .user-actions a[href="${page.charAt(0).toUpperCase() + page.slice(1)}.html"]`);
         if (activeLink) {
             activeLink.classList.add('active');
         }
 
-        // Salva la pagina attiva nel localStorage
         localStorage.setItem('activePage', page);
     }
 
     setupEventListeners() {
-        const menuItems = document.querySelectorAll('.menu a');
+        const menuItems = document.querySelectorAll('.menu a, .user-actions a');
         menuItems.forEach(item => {
             item.addEventListener('click', (e) => {
-                const page = item.getAttribute('data-page');
+                const page = item.getAttribute('data-page') || item.getAttribute('href').replace('.html', '').toLowerCase();
                 this.setActivePage(page);
             });
         });
 
-        // Ripristina lo stato attivo dal localStorage
         const savedPage = localStorage.getItem('activePage');
         if (savedPage) {
             this.setActivePage(savedPage);
@@ -76,7 +73,6 @@ class Navbar {
     }
 }
 
-// Inizializza la navbar quando il DOM è pronto
 document.addEventListener('DOMContentLoaded', () => {
     new Navbar();
 });

@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.search-container {
+    position: relative;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    padding-right: 50px; /* Space for the button */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    border-radius: 10px; /* Slightly rounded corners */
+}
+
+#search-button, #current-location-button {
+    background-color: #ffffff; /* Grayish background */
+    border: none;
+    padding: 5px; /* Reduced padding */
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px; /* Slightly rounded corners */
+    width: 30px; /* Reduced width */
+    height: 30px; /* Reduced height */
+}
+
+#search-button {
+    right: 50px; /* Adjust this value to move the button more to the left */
+}
+
+#current-location-button {
+    right: 10px; /* Adjust this value to move the button more to the left */
+}
+
+#search-button i, #current-location-button i {
+    color: #E9C82B; /* Yellow color */
+    font-size: 20px;
+}
+
+#map {
+    width: 100%;
+    height: calc(100% - 100px); /* Adjust height to fill the remaining space */
+    border: 1px solid #ccc; /* Optional: Add a border to the map */
+    border-radius: 10px; /* Optional: Add rounded corners to the map */
+}

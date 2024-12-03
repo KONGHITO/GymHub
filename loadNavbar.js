@@ -33,7 +33,7 @@ class Navbar {
                     </a>
                 </nav>
                 <div class="user-actions">
-                    <a href="Messages.html" class="${this.currentPage === 'messages' ? 'active' : ''}">
+                    <a href="Messages.html" data-page="messages" class="${this.currentPage === 'messages' ? 'active' : ''}">
                         <i class="bi bi-envelope"></i>
                     </a>
                     <a href="Profile.html" class="${this.currentPage === 'profile' ? 'active' : ''}">
@@ -49,7 +49,7 @@ class Navbar {
         const links = document.querySelectorAll('.menu a, .user-actions a');
         links.forEach(link => link.classList.remove('active'));
 
-        const activeLink = document.querySelector(`.menu a[data-page="${page}"], .user-actions a[href="${page.charAt(0).toUpperCase() + page.slice(1)}.html"]`);
+        const activeLink = document.querySelector(`.menu a[data-page="${page}"], .user-actions a[data-page="${page}"]`);
         if (activeLink) {
             activeLink.classList.add('active');
         }

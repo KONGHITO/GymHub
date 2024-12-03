@@ -11,9 +11,70 @@
 <body>
 <div id="navbar-container"></div> <!-- Navbar caricata dinamicamente -->
 <main>
-  <h1>Home Page</h1>
-  <!-- Contenuti della Home -->
+
+
+  <!-- Riquadro per creare un nuovo post -->
+  <div id="create-post-container">
+    <form id="create-post-form" onsubmit="createPost(event)">
+      <div class="user-profile">
+        <img src="user-profile.jpg" alt="Profilo" class="user-image">
+        <textarea id="post-description" placeholder="Scrivi qualcosa..." rows="3"></textarea>
+      </div>
+      <div id="create-post-actions">
+        <label for="media-file" class="upload-label">
+          <i class="bi bi-file-earmark-plus"></i> Aggiungi file
+        </label>
+        <input type="file" id="media-file" accept="image/*,video/*" onchange="previewFile()">
+        <div id="file-preview" class="hidden">
+          <div id="preview-container"></div>
+          <button type="button" class="remove-file" onclick="removeFile()">Rimuovi file</button>
+        </div>
+        <button type="submit" class="submit-button">Pubblica</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Contenitore dei post -->
+  <div id="posts-container">
+    <!-- Post esempio -->
+    <div class="post">
+      <div class="post-header">
+        <div class="user-info">
+          <img src="user-profile.jpg" alt="Profilo" class="user-image">
+          <p class="post-user">ProfiloUtente</p>
+        </div>
+        <p class="post-timestamp">28 novembre 2024, 10:00</p>
+      </div>
+      <div class="post-description">
+        <p>Questa è una descrizione dell'esempio di post.</p>
+      </div>
+      <div class="post-media">
+        <img src="example-image.jpg" alt="Contenuto multimediale">
+      </div>
+      <div class="post-actions">
+        <button class="like-button" onclick="toggleLike(this)">
+          <i class="bi bi-hand-thumbs-up"></i>
+          <span class="like-count">0</span>
+        </button>
+        <button class="comment-button" onclick="toggleComments(this)">
+          <i class="bi bi-chat-dots"></i> Commenta
+        </button>
+        <button class="share-button">
+          <i class="bi bi-share"></i> Condividi
+        </button>
+      </div>
+      <div class="post-comments hidden">
+        <div class="comment-form">
+          <img src="user-profile.jpg" alt="Profilo" class="user-image">
+          <textarea placeholder="Scrivi un commento..." rows="1"></textarea>
+          <button onclick="addComment(this)">Commenta</button>
+        </div>
+        <div class="comments-list"></div>
+      </div>
+    </div>
+  </div>
 </main>
+<script src="interactions.js"></script>
 <script src="loadNavbar.js"></script>
 </body>
 </html>

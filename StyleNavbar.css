@@ -113,6 +113,14 @@
     transition: transform 0.3s ease;
 }
 
+.user-actions a.active {
+    color: #E9C82B;
+}
+
+.user-actions a.active::after {
+    transform: scaleX(1);
+}
+
 .user-actions a:hover {
     color: #E9C82B;
 }

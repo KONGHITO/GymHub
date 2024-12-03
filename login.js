@@ -1,130 +1,176 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="StyleLogin.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-</head>
-<body>
+const togglePassword =document.getElementById("togglePassword");
+const passwordField = document.getElementById("password");
 
-<!-- main container "wrapper"-->
-<div class="wrapper">
-    <header class="header"> <!-- contains logo-->
-        <img class="Logo_Login" src="Gym-Hub 3.png" alt="Logo">
-    </header>
+togglePassword.addEventListener("click", function (){
+    //controlla se la password è visibile o nascosta
+    const type = passwordField.type === "password" ? "text" : "password";
+    passwordField.type = type;
 
-    <!-- Login section -->
-    <div class="login-container">
-        <form class="login-form">
-            <input type="text" placeholder="Username" id="username" class="input-field" required>
+    this.classList.toggle('bi-eye');
+    this.classList.toggle('bi-eye-slash');
 
-            <div class="password-container">
-                <input type="password" placeholder="Password" id="password" class="input-field" required>
-                <i id="togglePassword" class="bi bi-eye"></i> <!-- eye icon-->
+});
+
+
+const wrapper = document.querySelector(".wrapper");
+const loginContainer = document.querySelector(".login-container");
+const selectionContainer= document.querySelector(".selection-container");
+const registerLink = document.querySelector(".register-link");
+
+
+registerLink.addEventListener("click", function (e){
+    e.preventDefault();
+    loginContainer.style.display = 'none';
+    wrapper.style.width = '100%';
+    wrapper.style.height = 'auto';
+    wrapper.style.justifyContent = 'initial'
+    selectionContainer.style.display = 'block';
+})
+
+
+const userButtons = document.querySelectorAll(".select-user");
+userButtons.forEach(button => {
+    button.addEventListener("click", function (){
+        const userType = this.getAttribute("data-user");
+    });
+});
+
+
+const registerContainer = document.querySelector(".register-container");
+
+function showRegisterForm(userType){
+    const dynamicFields = document.getElementById("dynamic-fields")
+    const certificatoContainer = document.getElementById("certificato-container")
+
+    dynamicFields.innerHTML = '';
+    certificatoContainer.style.display = 'none';
+    selectionContainer.classList.add('hidden');
+    selectionContainer.classList.remove('visible');
+
+    selectionContainer.style.display = 'none';
+    registerContainer.style.display = 'flex';
+    registerContainer.classList.add('visible');
+
+
+    let fields = [];
+
+    if (userType === 'atleta') {
+        fields = [
+            { id: 'nome', placeholder: 'Nome', type: 'text' },
+            { id: 'cognome', placeholder: 'Cognome', type: 'text' },
+            { id: 'email', placeholder: 'Email', type: 'email' },
+            { id: 'username', placeholder: 'Username', type: 'text' },
+            { id: 'telefono', placeholder: 'Telefono', type: 'text' }
+        ];
+    } else if (userType === 'palestra') {
+        fields = [
+            { id: 'nome-titolare', placeholder: 'Nome Titolare', type: 'text' },
+            { id: 'cognome-titolare', placeholder: 'Cognome Titolare', type: 'text' },
+            { id: 'email-titolare', placeholder: 'Email Titolare', type: 'email' },
+            { id: 'username-struttura', placeholder: 'Username Struttura', type: 'text' },
+            { id: 'telefono-titolare', placeholder: 'Telefono Titolare', type: 'text' },
+            { id: 'telefono-struttura', placeholder: 'Telefono Struttura', type: 'text' }
+        ];
+    } else if (userType === 'trainer') {
+        fields = [
+            { id: 'nome', placeholder: 'Nome', type: 'text' },
+            { id: 'cognome', placeholder: 'Cognome', type: 'text' },
+            { id: 'email', placeholder: 'Email', type: 'email' },
+            { id: 'username', placeholder: 'Username', type: 'text' },
+            { id: 'telefono', placeholder: 'Telefono', type: 'text' }
+        ];
+        certificatoContainer.style.display = 'block'; // Mostra certificato per il trainer
+    }
+
+    fields.forEach(field => {
+        const inputHTML = `
+            <div class="input-field-container">
+                <input type="${field.type}" placeholder="${field.placeholder}" id="${field.id}" class="input-field" required>
             </div>
-
-            <p class="forgot-password-link">Hai dimenticato la <a href="#" class="password-link">Password?</a></p>
-            <button type="submit" class="login-button"> Accedi </button>
-            <button type="button" class="google-login-button">
-                <i class="bi bi-google"></i> Accedi con Google
-            </button>
-            <div class="separator"></div>
-            <p class="account-text">Non hai un account? <a href="#" class="register-link">Registrati</a></p>
-        </form>
-    </div>
-    <!-- End of login section -->
-
-    <!-- User selection -->
-    <div class="selection-container" style="display: none;">
-        <h2>Scegli il tipo di utente</h2>
-        <div class="row">
-            <!-- Athlete card -->
-            <div class="col-md-4">
-                <div class="card select-user" data-user="atleta">
-                    <img src="Atleta.png" class="card-img-top" alt="Atleta">
-                    <div class="card-body">
-                        <h5 class="card-title">Atleta</h5>
-                        <p class="card-text">Accedi a contenuti e servizi dedicati agli atleti</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Gym card -->
-            <div class="col-md-4">
-                <div class="card select-user" data-user="palestra">
-                    <img src="Palestra.png" class="card-img-top" alt="Palestra">
-                    <div class="card-body">
-                        <h5 class="card-title">Palestra</h5>
-                        <p class="card-text">Gestisci la tua palestra e offri i tuoi servizi</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Trainer card -->
-            <div class="col-md-4">
-                <div class="card select-user" data-user="trainer">
-                    <img src="Personal_Trainer.png" class="card-img-top" alt="Personal Trainer">
-                    <div class="card-body">
-                        <h5 class="card-title">Personal Trainer</h5>
-                        <p class="card-text">Collabora con gli atleti e palestre per crescere professionalmente</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="separator"></div>
-        <p class="return-to-login-link"><a href="#" id="return-to-login-selection">Hai già un account?Torna al login</a></p>
-    </div>
-
-    <!--End of user selection -->
+        `;
+        dynamicFields.innerHTML += inputHTML;
+    });
+}
 
 
-    <!-- Sign Up section -->
-    <div class="register-container" style="display: none;">
-        <h2 id="register-title">Registrazione</h2>
-        <form id="register-form" class="login-form">
-            <div id="dynamic-fields"></div>
-
-            <div class="password-container">
-                <input type="password" placeholder="Password" id="register-password" class="input-field" required>
-                <i id="toggleRegisterPassword" class="bi bi-eye"></i>
-            </div>
-
-            <div class="password-container">
-                <input type="password" placeholder="Ripeti Password" id="repeat-password" class="input-field" required>
-                <i id="toggleRepeatPassword" class="bi bi-eye"></i>
-            </div>
-
-            <div id="certificato-container" style="display: none;" class="certificate-field-container">
-                <label for="certificato" class="file-label">Inserisci Certificato (PDF)</label>
-                <input type="file" id="certificato" class="file-input" accept=".pdf">
-            </div>
-
-            <button type="submit" class="login-button">Registrati</button>
-        </form>
-        <div class="separator"></div>
-        <p class="return-to-selection-link">
-            <a href="#" id="return-to-selection">Torna alla scelta dell'utente</a>
-        </p>
-    </div>
+userButtons.forEach(button => {
+    button.addEventListener("click", function (){
+        const userType = this.getAttribute("data-user");
+        showRegisterForm(userType);
+    })
+})
 
 
-
-    <!-- Password Recovery section -->
-    <div class="password-recovery-container" style="display: none;">
-        <h2>Recupero Password</h2>
-        <form class="login-form">
-            <input type="text" placeholder="Inserisci indirizzo email o username" id="recovery-username" class="input-field" required>
-            <button type="submit" class="login-button">Continua</button>
-        </form>
-        <div class="separator"></div>
-        <p class="return-to-login-link"><a href="#" id="return-to-login">Torna alla schermata di login</a></p>
-    </div>
-    <!-- End of Password Recovery section -->
+document.getElementById('toggleRegisterPassword').addEventListener('click', function (){
+    const registerPassword = document.getElementById("register-password");
+    const type = registerPassword.type === 'password' ? 'text' : 'password';
+    registerPassword.type = type;
+    this.classList.toggle('bi-eye');
+    this.classList.toggle('bi-eye-slash');
+});
 
 
-</div> <!-- end of wrapper-->
-<script src="login.js"></script>
-</body>
-</html>
+document.getElementById('toggleRepeatPassword').addEventListener('click', function (){
+    const repeatPassword = document.getElementById("repeat-password");
+    const type = repeatPassword.type === 'password' ? 'text' : 'password';
+    repeatPassword.type = type;
+    this.classList.toggle('bi-eye');
+    this.classList.toggle('bi-eye-slash');
+})
+
+const passwordLink = document.querySelector('.password-link');
+const passwordRecoveryContainer = document.querySelector('.password-recovery-container');
+
+passwordLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    loginContainer.style.display = 'none'; // Nascondi il contenitore login
+    passwordRecoveryContainer.style.display = 'flex'; // Mostra il contenitore recupero password
+});
+
+const returnToLoginLink = document.getElementById('return-to-login');
+
+returnToLoginLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    passwordRecoveryContainer.style.display = 'none'; // Nascondi il contenitore recupero password
+    loginContainer.style.display = 'flex'; // Mostra il contenitore login
+});
+
+const returnToLoginSelectionLink = document.getElementById('return-to-login-selection');
+
+returnToLoginSelectionLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    selectionContainer.style.display = 'none'; // Nascondi il contenitore di selezione utente
+    loginContainer.style.display = 'flex'; // Mostra il contenitore di login
+});
+
+function resetWrapperSize() {
+    wrapper.style.width = '30%'; // Dimensione originale
+    wrapper.style.height = 'auto'; // Dimensione originale
+    wrapper.style.justifyContent = 'flex-start'; // Posizionamento originale
+}
+
+// Recupero Password -> Torna alla schermata di login
+returnToLoginLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    passwordRecoveryContainer.style.display = 'none'; // Nascondi il contenitore recupero password
+    loginContainer.style.display = 'flex'; // Mostra il contenitore login
+    resetWrapperSize(); // Reset delle dimensioni del wrapper
+});
+
+// Selezione Utente -> Torna alla schermata di login
+returnToLoginSelectionLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    selectionContainer.style.display = 'none'; // Nascondi il contenitore di selezione utente
+    loginContainer.style.display = 'flex'; // Mostra il contenitore di login
+    resetWrapperSize(); // Reset delle dimensioni del wrapper
+});
+
+const returnToSelectionLink = document.getElementById('return-to-selection');
+
+returnToSelectionLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    registerContainer.style.display = 'none'; // Nascondi il contenitore registrazione (indipendentemente dall'utente scelto)
+    selectionContainer.style.display = 'flex'; // Mostra il contenitore di selezione utente
+    selectionContainer.classList.remove('hidden'); // Assicurati che sia visibile
+    selectionContainer.classList.add('visible'); // Aggiungi la classe visibile
+});

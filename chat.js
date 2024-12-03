@@ -15,15 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const deleteFileButton = document.getElementById('delete-file-button');
     let selectedFile = null;
 
-    chatHeaderText.textContent = `Chat with ${user}`;
-    profileImage.src = `${user}.jpg`; // Assuming profile images are named after the username
+    if (user) {
+        chatHeaderText.textContent = `Chat with ${user}`;
+        profileImage.src = `${user}.jpg`; // Assuming profile images are named after the username
+    } else {
+        chatHeaderText.textContent = 'Chat';
+    }
 
     // Example messages
     const messages = [
-        { sender: 'user', text: 'Hello!', time: '10:00' },
-        { sender: 'other', text: 'Hi there!', time: '10:01' },
-        { sender: 'user', text: 'How are you?', time: '10:02' },
-        { sender: 'other', text: 'I\'m good, thanks!', time: '10:03' }
+        { sender: 'user', text: 'Ciao!', time: '10:00' },
+        { sender: 'other', text: 'Hey, ciao!', time: '10:01' },
+        { sender: 'user', text: 'Come stai?', time: '10:02' },
+        { sender: 'other', text: 'Tutto bene, grazie!', time: '10:03' }
     ];
 
     messages.forEach(message => {
@@ -33,10 +37,28 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.prepend(messageElement);
     });
 
-    sendButton.addEventListener('click', () => {
+    const sendMessage = () => {
         const messageText = chatInput.value;
-        if (messageText.trim() !== '') {
-            const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+        const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+
+        if (selectedFile) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'user');
+
+            if (selectedFile.type.startsWith('image/')) {
+                messageElement.innerHTML = `<span><img src="${filePreview.src}" alt="${selectedFile.name}" class="chat-media"></span><span class="message-time">${currentTime}</span>`;
+            } else if (selectedFile.type.startsWith('video/')) {
+                messageElement.innerHTML = `<span><video controls class="chat-media"><source src="${filePreview.src}" type="${selectedFile.type}">Your browser does not support the video tag.</video></span><span class="message-time">${currentTime}</span>`;
+            } else {
+                messageElement.innerHTML = `<span><a href="${filePreview.src}" target="_blank">${selectedFile.name}</a></span><span class="message-time">${currentTime}</span>`;
+            }
+
+            chatMessages.prepend(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            filePreviewContainer.style.display = 'none';
+            fileInput.value = '';
+            selectedFile = null;
+        } else if (messageText.trim() !== '') {
             const messageElement = document.createElement('div');
             messageElement.classList.add('message', 'user');
             messageElement.innerHTML = `<span>${messageText}</span><span class="message-time">${currentTime}</span>`;
@@ -44,7 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
             chatInput.value = '';
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-    });
+    };
+
+    sendButton.addEventListener('click', sendMessage);
+    sendFileButton.addEventListener('click', sendMessage);
 
     backArrow.addEventListener('click', () => {
         window.location.href = 'messages.html';
@@ -63,28 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 filePreviewContainer.style.display = 'flex';
             };
             reader.readAsDataURL(selectedFile);
-        }
-    });
-
-    sendFileButton.addEventListener('click', () => {
-        if (selectedFile) {
-            const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message', 'user');
-
-            if (selectedFile.type.startsWith('image/')) {
-                messageElement.innerHTML = `<span><img src="${filePreview.src}" alt="${selectedFile.name}" class="chat-media"></span><span class="message-time">${currentTime}</span>`;
-            } else if (selectedFile.type.startsWith('video/')) {
-                messageElement.innerHTML = `<span><video controls class="chat-media"><source src="${filePreview.src}" type="${selectedFile.type}">Your browser does not support the video tag.</video></span><span class="message-time">${currentTime}</span>`;
-            } else {
-                messageElement.innerHTML = `<span><a href="${filePreview.src}" target="_blank">${selectedFile.name}</a></span><span class="message-time">${currentTime}</span>`;
-            }
-
-            chatMessages.prepend(messageElement);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-            filePreviewContainer.style.display = 'none';
-            fileInput.value = '';
-            selectedFile = null;
         }
     });
 

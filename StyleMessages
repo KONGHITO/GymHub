@@ -1,0 +1,104 @@
+.messages-container {
+    width: 30%;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.message-preview {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.message-preview:last-child {
+    border-bottom: none;
+}
+
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.message-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.username {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.last-message {
+    color: #555;
+}
+
+.message-preview {
+    transition: background-color 0.3s ease;
+}
+
+.message-preview:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+    position: relative;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    padding-right: 50px; /* Space for the button */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    border-radius: 10px; /* Slightly rounded corners */
+}
+
+#search-button {
+    background-color: #ffffff; /* Grayish background */
+    border: none;
+    padding: 5px; /* Reduced padding */
+    cursor: pointer;
+    position: absolute;
+    right: 10px; /* Adjust this value to move the button more to the left */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px; /* Slightly rounded corners */
+    width: 30px; /* Reduced width */
+    height: 30px; /* Reduced height */
+}
+
+#search-icon {
+    color: #E9C82B; /* Yellow color */
+    font-size: 20px;
+}
+
+#search-history {
+    margin-top: 20px;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 10px; /* Slightly rounded corners */
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for better visibility */
+}

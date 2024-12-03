@@ -36,7 +36,7 @@ class Navbar {
                     <a href="Messages.html" data-page="messages" class="${this.currentPage === 'messages' ? 'active' : ''}">
                         <i class="bi bi-envelope"></i>
                     </a>
-                    <a href="Profile.html" class="${this.currentPage === 'profile' ? 'active' : ''}">
+                    <a href="Profile.html" data-page="profile" class="${this.currentPage === 'profile' ? 'active' : ''}">
                         <img src="user-profile.jpg" alt="Profilo" class="user-image">
                     </a>
                 </div>

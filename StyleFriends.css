@@ -1,0 +1,157 @@
+.friends-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.friends-stats {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.stats-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 5px;
+    color: #000000; /* Default text color */
+}
+
+.stats-btn:hover,
+.stats-btn.active {
+    color: #E9C82B; /* Yellow color */
+}
+
+.stats-btn:hover::after,
+.stats-btn.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #E9C82B; /* Yellow color */
+}
+
+.friends-content {
+    display: none;
+    width: 80%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    margin-top: 10px;
+}
+
+.follower-item {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc; /* Gray separation line */
+}
+
+.follower-item:not(:last-child) {
+    border-bottom: 1px solid #ccc; /* Gray separation line */
+}
+
+.follower-item:last-child {
+    border-bottom: none; /* No separation line for the last follower */
+}
+
+.follower-item:hover {
+    background-color: #e0e0e0; /* Darken the background on hover */
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: auto; /* Move the button to the right */
+}
+
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.follower-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.username {
+    font-size: 1.1em;
+    font-weight: bold; /* Make the username bold */
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: auto; /* Move the button to the right */
+    padding: 5px; /* Add some padding to make the button larger */
+    border-radius: 5px; /* Add some border radius for rounded corners */
+}
+
+.delete-btn:hover {
+    background-color: red; /* Red background on hover */
+    color: white; /* White text on hover */
+    border: 1px solid red; /* Red border on hover */
+}
+
+.search-container {
+    position: relative;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#follower-search-input,
+#following-search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    padding-right: 30px; /* Space for the icon */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    border-radius: 10px; /* Slightly rounded corners */
+}
+
+.search-icon-container {
+    position: absolute;
+    right: 10px; /* Adjust this value to position the icon */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    pointer-events: auto; /* Ensure the button is clickable */
+}
+
+#follower-search-icon,
+#following-search-icon {
+    color: #E9C82B; /* Yellow color */
+    font-size: 20px;
+}

@@ -7,6 +7,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const followingSearchInput = document.getElementById('following-search-input');
     const followerSearchIcon = document.getElementById('follower-search-icon');
     const followingSearchIcon = document.getElementById('following-search-icon');
+    const followerCount = document.getElementById('follower-count');
+    const followingCount = document.getElementById('following-count');
+
+    const updateFollowerCount = () => {
+        const count = document.querySelectorAll('#follower-content .follower-item').length;
+        followerCount.textContent = count;
+    };
+
+    const updateFollowingCount = () => {
+        const count = document.querySelectorAll('#following-content .follower-item').length;
+        followingCount.textContent = count;
+    };
+
+    const showConfirmationDialog = (message, onConfirm) => {
+        const dialog = document.createElement('div');
+        dialog.classList.add('confirmation-dialog');
+        dialog.innerHTML = `
+            <div>${message}</div>
+            <button id="confirm-btn" class="confirm-btn"><i class="bi bi-check-circle"></i></button>
+            <button id="cancel-btn" class="cancel-btn"><i class="bi bi-x-circle"></i></button>
+        `;
+        document.body.appendChild(dialog);
+
+        document.getElementById('confirm-btn').addEventListener('click', () => {
+            onConfirm();
+            document.body.removeChild(dialog);
+        });
+
+        document.getElementById('cancel-btn').addEventListener('click', () => {
+            document.body.removeChild(dialog);
+        });
+    };
 
     followerBtn.addEventListener('click', () => {
         followerContent.style.display = 'block';
@@ -25,7 +57,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.delete-btn').forEach(button => {
         button.addEventListener('click', (event) => {
             const followerItem = event.target.closest('.follower-item');
-            followerItem.remove();
+            const username = followerItem.querySelector('.username').textContent;
+            const isFollower = followerItem.closest('#follower-content') !== null;
+            const message = isFollower
+                ? `Vuoi eliminare ${username} dai tuoi follower?`
+                : `Sei sicuro di voler smettere di seguire ${username}?`;
+
+            showConfirmationDialog(message, () => {
+                followerItem.remove();
+                updateFollowerCount();
+                updateFollowingCount();
+            });
         });
     });
 
@@ -64,4 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
     followingSearchIcon.addEventListener('click', () => {
         searchFollowing();
     });
+
+    // Initial count update
+    updateFollowerCount();
+    updateFollowingCount();
 });

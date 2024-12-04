@@ -1,3 +1,8 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
 .friends-container {
     display: flex;
     flex-direction: column;
@@ -154,4 +159,50 @@
 #following-search-icon {
     color: #E9C82B; /* Yellow color */
     font-size: 20px;
+}
+
+.confirmation-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff; /* White background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1000;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.confirmation-dialog p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.confirmation-dialog .confirm-btn,
+.confirmation-dialog .cancel-btn {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-block; /* Ensure buttons are inline-block */
+    z-index: 1001; /* Ensure buttons are above the overlay */
+}
+
+.confirmation-dialog .confirm-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.confirmation-dialog .cancel-btn {
+    background-color: #dc3545;
+    color: white;
 }

@@ -27,16 +27,24 @@ body {
     object-fit: cover;
 }
 
-#change-image-button {
+.action-buttons {
     display: flex;
-    margin: 10px auto;
     justify-content: center;
     gap: 10px;
+    margin-top: 10px;
+}
+
+#change-image-button,
+#logout-button {
     padding: 10px;
     background-color: #E9C82B;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+#logout-button {
+    background-color: #ff0000;
 }
 
 #image-action-buttons {
@@ -106,4 +114,27 @@ body {
     border-radius: 10px;
     margin-bottom: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 1000;
+}
+
+.confirmation-dialog button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #E9C82B;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

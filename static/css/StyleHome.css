@@ -1,0 +1,403 @@
+/* Resetta i margini di default */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stile generale del body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+main {
+    padding: 20px;
+    margin-top: 60px; /* Per evitare che il contenuto venga coperto dalla navbar */
+}
+
+/* Contenitore per creare un nuovo post */
+#create-post-container {
+    width: 70%; /* Aumentato dal 50% al 70% */
+    max-width: 600px; /* Aumentato da 400px a 600px */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Testo per il nuovo post */
+#create-post-form textarea {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 14px;
+    resize: none;
+    font-family: Arial, sans-serif;
+    height: 60px;
+}
+
+/* Pulsanti nella casella di pubblicazione */
+#create-post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Nascondere l'input del file */
+#media-file {
+    display: none;
+}
+
+/* Etichetta per il file (cliccabile) */
+.upload-label {
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.upload-label i {
+    font-size: 18px;
+    color: #E9C82B;
+}
+
+/* Anteprima del file */
+#file-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#file-preview img,
+#file-preview video {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 5px;
+}
+
+.remove-file {
+    background: none;
+    border: none;
+    color: #E9C82B;
+    cursor: pointer;
+    font-size: 14px;
+    display: none;
+}
+
+.file-added .remove-file {
+    display: block;
+}
+
+/* Pulsante di pubblicazione */
+.submit-button {
+    background-color: #E9C82B;
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-top: 10px; /* Aggiungi un margine superiore per separare */
+}
+
+.submit-button:hover {
+    background-color: #d1af22;
+}
+
+/* Contenitore dei post */
+#posts-container {
+    width: 95%; /* Aumentato dal 90% al 95% */
+    max-width: 1000px; /* Aumentato da 800px a 1000px */
+    margin: 0 auto; /* Centra il contenitore dei post */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Stile del singolo post */
+.post {
+    width: 80%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Header del post */
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9; /* Colore di sfondo leggermente diverso */
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Linea di separazione */
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info:hover{
+    cursor: pointer;
+}
+
+.user-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Descrizione del post */
+.post-description p {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 10px;
+}
+.post-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Contenuto multimediale */
+.post-media img,
+.post-media video {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Azioni del post */
+.post-actions {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #555;
+}
+
+button i {
+    font-size: 18px;
+}
+
+button:hover {
+    color: #E9C82B;
+}
+
+/* Pulsante Mi Piace con solo l'icona colorata quando attivo */
+.like-button.active i {
+    color: #E9C82B;
+}
+
+.hidden {
+    display: none;
+}
+
+/* User profile image next to textarea */
+.user-profile {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.user-profile .user-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Comment form */
+.comment-form {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.comment-form .user-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comment-form textarea {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 14px;
+    resize: none;
+    font-family: Arial, sans-serif;
+}
+
+.comment-form button {
+    background-color: #E9C82B;
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background-color: #d1af22;
+}
+
+/* Comments list */
+.comments-list {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.comment .user-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comment-content {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: 10px;
+    flex: 1;
+}
+
+.comment-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.comment-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #555;
+}
+
+.comment-actions button i {
+    font-size: 16px;
+}
+
+.comment-actions button:hover {
+    color: #E9C82B;
+}
+/* Nome dell'utente nel commento */
+.comment-user {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.search-container {
+    position: relative;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    padding-right: 50px; /* Space for the button */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+#search-button {
+    background-color: #ccc; /* Grayish background */
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-icon {
+    color: #E9C82B; /* Yellow color */
+    font-size: 20px;
+}
+
+#search-history {
+    margin-top: 20px;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 10px; /* Slightly rounded corners */
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for better visibility */
+}
+
+#history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#history-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+
+#history-list li button {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    margin-left: 10px;
+}

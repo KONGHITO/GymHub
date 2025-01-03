@@ -1,0 +1,362 @@
+body{
+    font-family: Arial, sans-serif;
+    background: url("/static/img/Frame 205.png") no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: auto;
+    flex-direction: column;
+}
+
+.header{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.wrapper{
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    padding: 30px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.79);
+    max-width:900px;
+    width: 30%;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.login-container{
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: #FFFFFF;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.input-field{
+    padding: 12px;
+    border: 3px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.input-field:focus{
+    outline:none;
+    border-color: #E9C82B;
+}
+
+.login-button{
+    padding: 12px;
+    background-color: #E9C82B;
+    border: none;
+    border-radius: 5px;
+    color:black;
+    font-size: 16px;
+    cursor: pointer;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-button:hover{
+    background-color: #C3A420;
+}
+
+.google-login-button{
+    padding: 12px;
+    background-color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    color: rgba(255,0 ,0 ,0.79);
+    font-size: 16px;
+    cursor: pointer;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(126, 5, 5, 0.79);
+}
+
+.google-login-button i{
+    margin-right: 8px;
+}
+
+.google-login-button:hover{
+    background-color: #7E0505C9;
+    color: black;
+}
+
+.separator{
+    border-top: 1px solid #888;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.account-text{
+    font-size: 14px;
+    text-align: center;
+    color: black;
+}
+
+.forgot-password-link{
+    font-size: 14px;
+    text-align: right;
+    width: 100%;
+}
+
+.register-link, .password-link{
+    color: #E9C82B;
+    text-decoration: none;
+}
+
+.register-link:hover, .password-link:hover, #togglePassword:hover, .password-container i:hover, .input-field-container i:hover{
+    color: #C3A420;
+}
+
+.Logo_Login{
+    max-width: 180px;
+    width: 100%;
+    height: auto;
+}
+
+
+#password{
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+
+#togglePassword{
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    color: #E9C82B;
+}
+
+.password-container, .input-field-container{
+    position: relative;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.password-container input, .input-field-container input{
+    width: 100%;
+    padding-right:40px;
+    box-sizing: border-box;
+}
+
+.password-container i, .input-field-container i{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    color: #E9C82B;
+    transition: color 0.3s ease;
+}
+
+.selection-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.selection-container .row{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+
+.card{
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card img{
+    border-radius: 10px 10px 0 0;
+    height: 150px;
+    object-fit: cover;
+}
+
+
+.card-title{
+    color: #E9C82B;
+}
+
+.card .btn{
+    background-color: #E9C82B;
+    border: none;
+}
+
+
+.card .btn:hover{
+    background-color: #C3A420;
+}
+
+.register-container{
+    background-color: white;
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.register-container .input-field{
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin: 10px 0;
+    border: 3px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.file-label{
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+
+.file-input{
+    width: 90%;
+    max-width: 400px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+
+.hidden{
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.visible{
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.password-recovery-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: #FFFFFF;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+.return-to-login-link {
+    font-size: 14px;
+    text-align: left;
+    width: 100%;
+    margin-top: 10px;
+    color: black;
+}
+
+.return-to-login-link a {
+    color: black;
+    text-decoration: underline; /* Sottolinea il link */
+}
+
+.return-to-login-link a:hover {
+    color: #C3A420; /* Cambia colore al passaggio del mouse */
+}
+
+.separator {
+    border-top: 1px solid #888; /* Linea grigia */
+    margin: 20px 0; /* Spazio sopra e sotto la linea */
+    width: 100%;
+}
+
+.return-to-selection-link {
+    font-size: 14px;
+    text-align: left;
+    width: 100%;
+    margin-top: 10px;
+    color: black;
+}
+
+.return-to-selection-link a {
+    color: black;
+    text-decoration: underline;
+}
+
+.return-to-selection-link a:hover {
+    color: #C3A420; /* Cambia colore al passaggio del mouse */
+}
+
+.separator {
+    border-top: 1px solid #888; /* Linea grigia */
+    margin: 20px 0;
+    width: 100%;
+}
+
+.select-user .card-img-top {
+    width: 40px; /* Smaller width */
+    height: 40px; /* Smaller height */
+    object-fit: contain; /* Ensure the image is not cropped */
+    display: block;
+    margin: 0 auto; /* Center the image */
+}
+
+/* Make the text inside the buttons smaller and ensure the buttons have the same size */
+.select-user .card-body .card-title,
+.select-user .card-body .card-text {
+    font-size: 12px; /* Smaller font size */
+    text-align: center; /* Center the text */
+}
+
+.select-user .card {
+    width: 100%; /* Ensure all cards have the same width */
+    max-width: 150px; /* Set a maximum width */
+    margin: 0 auto;
+}

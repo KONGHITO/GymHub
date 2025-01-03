@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" data-current-page="search">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search</title>
+  <link rel="stylesheet" href="/static/css/StyleSearch.css">
+  <link rel="stylesheet" href="/static/css/StyleNavbar.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+<div id="navbar-container"></div> <!-- Navbar caricata dinamamente -->
+<main>
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Cerca...">
+    <button id="search-button">
+      <i id="search-icon" class="bi bi-search"></i>
+    </button>
+  </div>
+  <div id="search-history" class="hidden">
+    <ul id="history-list"></ul>
+  </div>
+</main>
+<script src="/static/js/loadNavbar.js"></script>
+<script src="/static/js/search.js"></script>
+</body>
+</html>

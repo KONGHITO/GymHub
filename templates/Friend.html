@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friends</title>
+  <link rel="stylesheet" href="/static/css/StyleFriend.css">
+  <link rel="stylesheet" href="/static/css/StyleNavbar.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+</head>
+<body>
+<div id="navbar-container"></div> <!-- Navbar caricata dinamicamente -->
+<div class="friends-container">
+  <div class="friends-stats">
+    <button id="follower-btn" class="stats-btn">Follower: <span id="follower-count"> {{ follower_count }}</span></button>
+    <button id="following-btn" class="stats-btn">Account seguiti: <span id="following-count">{{ following_count }}</span></button>
+  </div>
+  <div id="follower-content" class="friends-content">
+     <div class="search-container">
+        <input type="text" id="follower-search-input" placeholder="Cerca follower...">
+        <button class="search-icon-container" id="follower-search-icon-container">
+        <i id="follower-search-icon" class="bi bi-search"></i>
+        </button>
+     </div>
+    <!-- Follower content goes here -->
+    <div class="follower-item">
+      <img src="profile1.jpg" alt="Profile Image" class="profile-image">
+      <div class="follower-info">
+        <p class="username">User1</p>
+        <button class="delete-btn">x</button>
+      </div>
+    </div>
+    <div class="follower-item">
+      <img src="profile2.jpg" alt="Profile Image" class="profile-image">
+      <div class="follower-info">
+        <p class="username">User2</p>
+        <button class="delete-btn">x</button>
+      </div>
+    </div>
+    <div class="follower-item">
+      <img src="profile3.jpg" alt="Profile Image" class="profile-image">
+      <div class="follower-info">
+        <p class="username">User3</p>
+        <button class="delete-btn">x</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="following-content" class="friends-content" style="display: none;">
+    <div class="search-container">
+      <input type="text" id="following-search-input" placeholder="Cerca account seguiti...">
+      <button class="search-icon-container" id="following-search-icon-container">
+        <i id="following-search-icon" class="bi bi-search"></i>
+      </button>
+    </div>
+    <!-- Following content goes here -->
+    <div class="follower-item">
+      <img src="profile4.jpg" alt="Profile Image" class="profile-image">
+      <div class="follower-info">
+        <p class="username">User4</p>
+        <button class="delete-btn">x</button>
+      </div>
+    </div>
+    <div class="follower-item">
+      <img src="profile5.jpg" alt="Profile Image" class="profile-image">
+      <div class="follower-info">
+        <p class="username">User5</p>
+        <button class="delete-btn">x</button>
+      </div>
+    </div>
+    <div class="follower-item">
+      <img src="profile6.jpg" alt="Profile Image" class="profile-image">
+      <div class="follower-info">
+        <p class="username">User6</p>
+        <button class="delete-btn">x</button>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+<script>
+    const userId = "{{ user_id }}";
+    sessionStorage.setItem('user_id', userId);
+</script>
+<script src="/static/js/loadNavbar.js"></script>
+<script src="/static/js/friend.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Messaging Section -->
+    <div class="messaging-section">
+        <!-- Chat List -->
+        <div class="chat-list">
+            <h2>Your Chats</h2>
+            <ul id="chat-list">
+                <!-- Chat items will be dynamically loaded here -->
+            </ul>
+        </div>
+
+        <!-- Chat Messages -->
+        <div class="chat-window">
+            <div class="chat-header">
+                <h3 id="chat-participants">Chat with: </h3>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be dynamically loaded here -->
+            </div>
+            <div class="chat-input">
+                <form id="message-form">
+                    <textarea id="message-text" placeholder="Type your message here..." rows="3"></textarea>
+                    <input type="file" id="message-media" accept="image/*,video/*">
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/loadNavbar.js"></script>
+    <script src="/js/messages.js"></script>
+</body>
+</html>
